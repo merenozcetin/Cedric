@@ -1,0 +1,48 @@
+
+    {% extends "layout.html" %}
+
+    {% block body %}
+    <div class="page-text-wrapper clearfix" data-edit-main-image="Background" data-collection-id="61d8eb17991d8f0d79998535">
+      <h1 class="page-title"><span data-content-field="title"><p style="text-align: center;">Thoughts</p></span></h1>
+      <div class="page-description" data-content-field="description" data-default-description="Page Description"><p class="" data-rte-preserve-empty="true" style="white-space:pre-wrap;"><span></span></p></div>
+    </div>
+    
+    
+    
+    
+    
+    
+    {% for article in articles %}
+        
+      
+      
+    <div class="row" >
+        
+                    <div class="col-lg-8" >
+                        <!-- Post content-->
+                        <article>
+                            <!-- Post header-->
+                            <header class="mb-4">
+                                <!-- Post title-->
+                                <a href="{% url 'article:detail' article.id %}"><h1 class="fw-bolder mb-1" style="text-align: center;">{{article.title}}</h1></a>
+                                <!-- Post meta content-->
+                                <div class="text-muted fst-italic mb-2"></div>
+                                 <!-- Post categories-->
+                                
+                            </header>
+                            <!-- Preview image figure-->
+                            {% if article.article_image %}
+                            <a href="{% url 'article:detail' article.id %}"><figure class="mb-4"><img class="img-fluid rounded" src="{{article.article_image.url}}" alt="..." /></figure> </a>
+                            {% endif %}
+                            
+                            <p class="lead">
+                                {{article.content|safe|truncatewords:10}}
+                            </p>
+                        </article>
+                    </div>
+            
+        </div>
+        
+    {% endfor %}
+    {% endblock body %}
+    

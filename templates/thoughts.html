@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="page-text-wrapper clearfix" data-edit-main-image="Background" data-collection-id="61d8eb17991d8f0d79998535">
+    <h1 class="page-title"><span data-content-field="title"><p style="text-align: center;">Writer</p></span></h1>
+    <div class="page-description" data-content-field="description" data-default-description="Page Description"><p class="" data-rte-preserve-empty="true" style="white-space:pre-wrap;"><span></span></p></div>
+  </div>
+  <br>
+  {% if request.user.username == "merenozcetin" %}
+  <div style= "text-align: center;"><a class="btn btn-outline-info" href="/thoughts/addthought" >Add Thought</a></div>
+ 
+  
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Date</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for article in articles %}
+        <tr>
+        <th scope="row">{{article.id}}</th>
+        <td><a href="{% url 'article:detail' article.id %}">{{article.title}}</a></td>
+        <td>{{article.author.username}}</td>
+        <td>{{article.created_date}}</td>
+        <td><a href="{% url 'article:update' article.id %}" class="btn btn-outline-info">Update</a></td>
+        <td><a href="{% url 'article:delete' article.id %}" class="btn btn-outline-info">Delete</a></td>
+      </tr>
+      {% endfor %}
+      {% endif %}
+
+
+
+
+{% endblock body %}

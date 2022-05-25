@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+html,
+body {
+    height: 100%
+    
+}
+
+#row {
+    display: grid;
+    place-items: center;
+font-family: 'Source Sans Pro', sans-serif;
+    
+}
+
+
+
+
+ .card {
+     position: relative;
+     display: flex;
+     padding:20px;
+     flex-direction: column;
+     min-width: 0;
+     word-wrap: break-word;
+     background-color: #fff;
+     background-clip: border-box;
+     border: 1px solid #d2d2dc;
+     border-radius: 11px;
+     -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+     -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+     box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
+ }
+
+.media img{
+      
+    width: 60px;
+    height: 60px;
+}
+
+
+.reply a {
+    
+    text-decoration: none;
+}</style>
+
+<div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1" style="text-align: center;">{{article.title}}</h1>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2"></div>
+                             <!-- Post categories-->
+                            
+                        </header>
+                        <!-- Preview image figure-->
+                        {% if article.article_image %}
+                         <figure class="mb-4"><img class="img-fluid rounded" src="{{article.article_image.url}}" alt="..." /></figure> 
+                        {% endif %}
+                        
+                        <p class="lead">
+                            {{article.content|safe}}
+                        </p>
+                    </article>
+                    <br><br><br>
+                    
+                    <form method="post" action="{% url 'article:comment' article.id %}">
+                        {% csrf_token %}
+                    <div class="form-floating">
+                        <textarea name="comment_content" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <br>
+                        <button type "submit" class="btn btn-outline-info" style= "text-align: center;">Submit</button>
+                        
+                      </div></form>
+                      <br>
+                      {% if comments %}
+                      {% for comment in comments %}
+                      <div class="container mb-5 mt-5">
+			  
+			     
+					<div class="row">
+						<div class="col-md-12">
+							
+							<div class="row">
+								<div class="col-md-12">
+									<div class="media">
+										<img class="mr-3 rounded-circle" alt="Bootstrap Media Preview" src="https://i.imgur.com/stD0Q19.jpg" />
+										<div class="media-body">
+											<div class="row">
+											 <div class="col-8 d-flex">
+											    <h5>{{comment.comment_author}}</h5>
+												
+											 </div>
+											 <div>{{comment.comment_date}}</div>
+											 <div class="col-4">
+											 
+											 <div class="pull-right reply">
+											 
+											
+											 
+											 </div>
+											 
+											 </div>
+											</div>		
+											
+											{{comment.comment_content}}
+                                            
+											
+											
+										</div>
+									</div>
+									</div>
+									
+									
+                      {% endfor %}
+                    
+                    {% else %}
+                    
+                    {% endif %}
+            
+        </div>
+        
+{% endblock body %}

@@ -1,0 +1,119 @@
+<style>
+  header {
+    width: 100%; 
+  }
+  
+  #logo {
+      text-align: center;
+    margin-top:0;
+  }
+  
+  .nav {
+      text-align: center;
+      display:flex;
+  }
+  
+  .nav li {
+    flex: 1;
+      display: inline;
+  }
+  
+  /* use media query to change the layout */
+  @media  (min-width: 768px) {
+      body {
+          background-color: #f2f2f2;
+      }
+  
+  
+      .nav li:nth-child(1), .nav li:nth-child(2) {
+          float: none;
+      }
+  
+      .nav li:nth-child(3), .nav li:nth-child(4) {
+          float: none;
+      }
+  }
+  .nav a{
+    color: rgb(100, 93, 105);
+    }
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+ 
+    
+  </style>
+  
+  <header>
+    <div class="container" style="text-align: center;">
+      
+      <ul class="nav">
+          <li class=""><a class="nav-link" href="/projects"  >Projects</a></li>
+          {% if request.user.username == "merenozcetin" %}
+          <li><a class="nav-link" href="/admin">Admin</a></li>
+          {% endif %}
+          <li><a class="nav-link" href="{% url 'contact'%}">Contact</a></li>
+          <li><a class="navbar-brand" href="{% url 'index'%}"  >  <img src="https://images.squarespace-cdn.com/content/v1/59d544e0ccc5c57202626793/12fcb287-8b28-4b56-8af8-184819310e08/Screen+Shot+2022-01-14+at+15.33.22.png?format=1500w" width="30" height="30" class="d-inline-block align-top" alt=""></a></li>
+          {% if request.user.username == "merenozcetin" %}
+          <li><a class="nav-link" href="{% url 'article:thoughts'%}">Writer</a></li>
+          {% endif %}
+          <li><a class="nav-link" href="{% url 'article:thoughts1'%}">Thoughts</a></li>
+          {% if request.user.is_authenticated %}
+          <li><div class="dropdown">
+            <a class="nav-link" href="/" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{request.user.username}}
+            </a>
+          
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'user:logout'%}">Log Out</a>
+              
+            </div></div></li> 
+           
+          {% else %} 
+          
+          <li><div class="dropdown">
+          <a class="nav-link"  href="/" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+          Account
+          </a>
+  
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'user:login'%}">Log In</a>  
+            <a class="dropdown-item" href="{% url 'user:register'%}">Sign Up</a>
+          </div></div></li>  
+
+          {% endif %}
+
+          
+          
+          
+            
+          
+      </ul>
+      
+    </div>
+  </header>
+  
+
+
+
+  
+  
+
+
