@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     "ckeditor",
     'django_cleanup',
+    'django.contrib.sites',
+    'oauth_app',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
