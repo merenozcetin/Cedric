@@ -142,4 +142,13 @@
 
 
 
-  
+    <li><div class="dropdown show">
+            
+      <button class="nav-link" href="/" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+      Account
+      </button>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="{% url 'user:login'%}">Log In</a>  
+        <a class="dropdown-item" href="{% url 'user:register'%}">Sign Up</a>
+      </div></div></li>  

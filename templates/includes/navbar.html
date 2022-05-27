@@ -1,3 +1,4 @@
+
 <style>
   header {
     width: 100%; 
@@ -87,19 +88,19 @@
             </div></div></li> 
            
           {% else %} 
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown link
+            </a>
           
-          <li><div class="dropdown">
-          <a class="nav-link"  href="/" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-          Account
-          </a>
-  
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="{% url 'user:login'%}">Log In</a>  
-            <a class="dropdown-item" href="{% url 'user:register'%}">Sign Up</a>
-          </div></div></li>  
-
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
           {% endif %}
-
+          
           
           
           
@@ -113,7 +114,6 @@
 
 
 
-  
-  
+
 
 

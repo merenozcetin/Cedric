@@ -19,6 +19,9 @@ from django.urls import path,include
 from article import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path, include
+from django.views.generic import TemplateView
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls,name="admin"),
@@ -27,6 +30,8 @@ urlpatterns = [
     path('contact/', views.contact,name = "contact"),
     path('thoughts/', include("article.urls")),
     path('user/', include("user.urls")),
+    path('accounts/', include('allauth.urls')),
+    
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

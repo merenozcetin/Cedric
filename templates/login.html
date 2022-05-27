@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 {% load crispy_forms_tags %}
+{% load socialaccount %}
 
 
 
@@ -14,8 +15,13 @@
     {% csrf_token %}
     {{form|crispy}} <br>
     <button type "submit" class="btn btn-outline-info">Log In</button>
+    <a href="{% provider_login_url 'google' %}">Login With Google</a>
+    
 </form>
 </div> 
   </div>
+
+  
+  
 
 {% endblock body %}
